@@ -65,6 +65,9 @@ def vae_loss(reconstruction, x, mu, logvar):
 
     return total_loss, reconstruction_loss, kl_loss
 
+train_total_losses = []
+train_recon_losses = []
+train_kl_losses = []
 
 num_epochs = 3
 
@@ -115,9 +118,44 @@ for epoch in range(num_epochs):
     )
 
 
+
+avg_total_loss = epoch_loss / len(loader)
+avg_recon_loss = epoch_recon / len(loader)
+avg_kl_loss = epoch_kl / len(loader)
+
+train_total_losses.append(avg_total_loss)
+train_recon_losses.append(avg_recon_loss)
+train_kl_losses.append(avg_kl_loss)
+
+print(f"\nEpoch {epoch + 1}/{num_epochs}")
+print(f"Total Loss: {avg_total_loss:.2f}")
+print(f"Reconstruction Loss: {avg_recon_loss:.2f}")
+print(f"KL Loss: {avg_kl_loss:.2f}")
+
+
 torch.save(
     model.state_dict(),
     "vae_model.pth"
 )
 
 print("\nVAE model saved.")
+
+import matplotlib.pyplot as plt
+
+epochs = range(1, num_epochs + 1)
+
+plt.figure(figsize=(8, 5))
+
+plt.plot(epochs, train_total_losses, marker="o", label="Total Loss")
+plt.plot(epochs, train_recon_losses, marker="o", label="Reconstruction Loss")
+plt.plot(epochs, train_kl_losses, marker="o", label="KL Loss")
+
+plt.xlabel("Epoch")
+plt.ylabel("Loss")
+plt.title("VAE Training Loss")
+plt.legend()
+plt.grid(True)
+
+plt.tight_layout()
+plt.savefig("vae_loss_curve.png")
+plt.show()
