@@ -107,37 +107,49 @@ The resulting manifold shows smooth transitions between neighbouring generated b
 - `vae_loss_curve.png` – training loss plot
 
 
-Project
-COMP3710 Demo 2 - UNet Brain MRI Segmentation
+## Task 2 - UNet Brain MRI Segmentation
 
-Dataset
-Preprocessed OASIS dataset on Rangpur
+### Dataset
+Preprocessed OASIS dataset on Rangpur.
 
-Input
-256 × 256 grayscale MRI
+### Input
+256 × 256 grayscale MRI images.
 
-Output
-4-class segmentation
+### Output
+4-class categorical segmentation.
 
-Model
-UNet with encoder, bottleneck, decoder and skip connections
+### Model
+UNet with:
+- Encoder
+- Bottleneck
+- Decoder
+- Skip connections
 
-Training
-CrossEntropyLoss
-Adam optimizer
-3 epochs
-A100 GPU
+### Training
+- Loss: CrossEntropyLoss
+- Optimizer: Adam
+- Epochs: 3
+- GPU: NVIDIA A100
 
-Validation Dice
-Class 0: 0.9991
-Class 1: 0.9416
-Class 2: 0.9575
-Class 3: 0.9746
-Mean: 0.9682
+### Validation Dice
+| Class | DSC |
+|---|---:|
+| 0 | 0.9991 |
+| 1 | 0.9416 |
+| 2 | 0.9575 |
+| 3 | 0.9746 |
+| **Mean** | **0.9682** |
 
-Test Dice
-Class 0: 0.9990
-Class 1: 0.9456
-Class 2: 0.9550
-Class 3: 0.9727
-Mean: 0.9681
+### Test Dice
+| Class | DSC |
+|---|---:|
+| 0 | 0.9990 |
+| 1 | 0.9456 |
+| 2 | 0.9550 |
+| 3 | 0.9727 |
+| **Mean** | **0.9681** |
+
+### Example Results
+![Example 1](test_results/result_0.png)
+![Example 2](test_results/result_1.png)
+![Example 3](test_results/result_2.png)
