@@ -7,7 +7,9 @@ from dataset import BrainSegmentationDataset
 from unet_model import UNet
 
 
-BASE_PATH = r"D:\Xu yuanxii\UQ_2025.7-2027.6\2026 Semester2\COMP3710\Demo2\keras_png_slices_data\keras_png_slices_data"
+#BASE_PATH = r"D:\Xu yuanxii\UQ_2025.7-2027.6\2026 Semester2\COMP3710\Demo2\keras_png_slices_data\keras_png_slices_data"
+
+BASE_PATH = "/home/groups/comp3710/OASIS"
 
 IMAGE_DIR = os.path.join(BASE_PATH, "keras_png_slices_train")
 MASK_DIR = os.path.join(BASE_PATH, "keras_png_slices_seg_train")
