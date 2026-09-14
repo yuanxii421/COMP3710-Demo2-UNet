@@ -105,3 +105,39 @@ The resulting manifold shows smooth transitions between neighbouring generated b
 - `vae_visualize.py` – reconstruction and latent manifold visualisation
 - `vae_model.pth` – trained model weights (not committed to GitHub)
 - `vae_loss_curve.png` – training loss plot
+
+
+Project
+COMP3710 Demo 2 - UNet Brain MRI Segmentation
+
+Dataset
+Preprocessed OASIS dataset on Rangpur
+
+Input
+256 × 256 grayscale MRI
+
+Output
+4-class segmentation
+
+Model
+UNet with encoder, bottleneck, decoder and skip connections
+
+Training
+CrossEntropyLoss
+Adam optimizer
+3 epochs
+A100 GPU
+
+Validation Dice
+Class 0: 0.9991
+Class 1: 0.9416
+Class 2: 0.9575
+Class 3: 0.9746
+Mean: 0.9682
+
+Test Dice
+Class 0: 0.9990
+Class 1: 0.9456
+Class 2: 0.9550
+Class 3: 0.9727
+Mean: 0.9681
